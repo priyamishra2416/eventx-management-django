@@ -2,7 +2,6 @@
 
 <div align="center">
 
-![EventX Banner](https://via.placeholder.com/1200x400.png?text=EventX+-+College+Event+Booking+System)
 
 🚀 A modern Django-based Event Booking System for managing and booking college events with QR code tickets and PDF generation.
 
