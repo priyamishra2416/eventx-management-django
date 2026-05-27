@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- =========================
+     BACKGROUND EFFECTS
+========================= -->
+
+<div class="blur1"></div>
+
+<div class="blur2"></div>
+
+
+
+
+
+<!-- =========================
+     TICKET SECTION
+========================= -->
+
+<section class="ticket-section container">
+
+
+
+    <!-- TICKET CARD -->
+
+    <div class="ticket-card">
+
+
+
+        <!-- HEADER -->
+
+        <div class="ticket-header">
+
+            <h1>
+                🎫 Event Ticket
+            </h1>
+
+            <p>
+                Your booking has been confirmed successfully.
+            </p>
+
+        </div>
+
+
+
+
+
+
+        <!-- EVENT TITLE -->
+
+        <div class="ticket-event-title">
+
+            <h2>
+
+                {{ booking.event.title }}
+
+            </h2>
+
+        </div>
+
+
+
+
+
+
+        <!-- EVENT IMAGE -->
+
+        <div class="ticket-image">
+
+            {% if booking.event.image %}
+
+            <img src="{{ booking.event.image.url }}"
+                alt="{{ booking.event.title }}">
+
+            {% else %}
+
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+                alt="event-image">
+
+            {% endif %}
+
+        </div>
+
+
+
+
+
+
+        <!-- TICKET INFO -->
+
+        <div class="ticket-info-grid">
+
+
+
+            <div class="ticket-info-box">
+
+                <h3>
+                    👤 Full Name
+                </h3>
+
+                <p>
+                    {{ booking.full_name }}
+                </p>
+
+            </div>
+
+
+
+
+
+            <div class="ticket-info-box">
+
+                <h3>
+                    📧 Email
+                </h3>
+
+                <p>
+                    {{ booking.email }}
+                </p>
+
+            </div>
+
+
+
+
+
+            <div class="ticket-info-box">
+
+                <h3>
+                    📞 Phone
+                </h3>
+
+                <p>
+                    {{ booking.phone }}
+                </p>
+
+            </div>
+
+
+
+
+
+            <div class="ticket-info-box">
+
+                <h3>
+                    💺 Seats
+                </h3>
+
+                <p>
+                    {{ booking.seats }}
+                </p>
+
+            </div>
+
+
+
+
+
+            <div class="ticket-info-box">
+
+                <h3>
+                    📍 Location
+                </h3>
+
+                <p>
+                    {{ booking.event.location }}
+                </p>
+
+            </div>
+
+
+
+
+
+            <div class="ticket-info-box">
+
+                <h3>
+                    📅 Event Date
+                </h3>
+
+                <p>
+                    {{ booking.event.date }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <!-- BOOKING ID -->
+
+        <div class="booking-id-box">
+
+            <h3>
+                Booking ID
+            </h3>
+
+            <p>
+                {{ booking.booking_id }}
+            </p>
+
+        </div>
+
+
+
+
+
+
+        <!-- QR CODE -->
+
+        {% if booking.qr_code %}
+
+        <div class="ticket-qr">
+
+            <h3>
+                Scan QR Ticket
+            </h3>
+
+            <img src="{{ booking.qr_code.url }}"
+                alt="qr-code">
+
+        </div>
+
+        {% endif %}
+
+
+
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="ticket-buttons">
+
+
+
+            <!-- DOWNLOAD PDF -->
+
+            <a href="{% url 'download_ticket' booking.id %}"
+                class="btn-primary">
+
+                Download PDF
+
+            </a>
+
+
+
+
+
+            <!-- DASHBOARD -->
+
+            <a href="{% url 'dashboard' %}"
+                class="btn-secondary">
+
+                Dashboard
+
+            </a>
+
+
+
+
+
+            <!-- HOME -->
+
+            <a href="/"
+                class="card-btn">
+
+                Back To Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- =========================
+     BACKGROUND EFFECTS
+========================= -->
+
+<div class="blur1"></div>
+
+<div class="blur2"></div>
+
+
+
+
+
+<!-- =========================
+     REGISTER SECTION
+========================= -->
+
+<section class="auth-section container">
+
+
+
+    <!-- AUTH CARD -->
+
+    <div class="auth-card">
+
+
+
+        <!-- LOGO -->
+
+        <div class="auth-logo">
+
+            <img src="/static/images/logo.png"
+                alt="logo">
+
+        </div>
+
+
+
+
+
+        <!-- TITLE -->
+
+        <h1>
+            Create Account
+        </h1>
+
+        <p>
+            Join EventX and explore amazing campus events with a premium experience.
+        </p>
+
+
+
+
+
+        <!-- MESSAGES -->
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+            <div class="auth-message">
+
+                {{ message }}
+
+            </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+
+
+
+
+
+        <!-- REGISTER FORM -->
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+
+            <!-- USERNAME -->
+
+            <div class="input-group">
+
+                <label>
+                    Username
+                </label>
+
+                <input type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required>
+
+            </div>
+
+
+
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    required>
+
+            </div>
+
+
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input type="password"
+                    name="password"
+                    placeholder="Create password"
+                    required>
+
+            </div>
+
+
+
+
+
+            <!-- BUTTON -->
+
+            <button type="submit">
+
+                Create Account
+
+            </button>
+
+        </form>
+
+
+
+
+
+
+        <!-- LOGIN LINK -->
+
+        <div class="auth-link">
+
+            Already have an account?
+
+            <a href="{% url 'login_page' %}">
+
+                Login
+
+            </a>
+
+        </div>
+
+
+
+
+
+        <!-- HOME LINK -->
+
+        <div class="back-home">
+
+            <a href="/">
+
+                ← Back To Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

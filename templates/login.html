@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- =========================
+     BACKGROUND EFFECTS
+========================= -->
+
+<div class="blur1"></div>
+
+<div class="blur2"></div>
+
+
+
+
+
+<!-- =========================
+     LOGIN SECTION
+========================= -->
+
+<section class="auth-section container">
+
+
+
+    <!-- AUTH CARD -->
+
+    <div class="auth-card">
+
+
+
+        <!-- LOGO -->
+
+        <div class="auth-logo">
+
+            <img src="/static/images/logo.png"
+                alt="logo">
+
+        </div>
+
+
+
+
+
+        <!-- TITLE -->
+
+        <h1>
+            Welcome Back
+        </h1>
+
+        <p>
+            Login to continue your premium event journey with EventX.
+        </p>
+
+
+
+
+
+        <!-- MESSAGES -->
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+            <div class="auth-message">
+
+                {{ message }}
+
+            </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+
+
+
+
+
+        <!-- LOGIN FORM -->
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+
+            <!-- USERNAME -->
+
+            <div class="input-group">
+
+                <label>
+                    Username
+                </label>
+
+                <input type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required>
+
+            </div>
+
+
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required>
+
+            </div>
+
+
+
+
+
+            <!-- BUTTON -->
+
+            <button type="submit">
+
+                Login Account
+
+            </button>
+
+        </form>
+
+
+
+
+
+
+        <!-- AUTH LINK -->
+
+        <div class="auth-link">
+
+            Don't have an account?
+
+            <a href="{% url 'register_page' %}">
+
+                Register
+
+            </a>
+
+        </div>
+
+
+
+
+
+        <!-- HOME LINK -->
+
+        <div class="back-home">
+
+            <a href="/">
+
+                ← Back To Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- =========================
+     BACKGROUND EFFECTS
+========================= -->
+
+<div class="blur1"></div>
+
+<div class="blur2"></div>
+
+
+
+
+
+<!-- =========================
+     EVENT DETAIL SECTION
+========================= -->
+
+<section class="detail-section container">
+
+
+
+    <!-- DETAIL CARD -->
+
+    <div class="detail-card">
+
+
+
+        <!-- =========================
+             EVENT IMAGE
+        ========================= -->
+
+        <div class="detail-image">
+
+            {% if event.image %}
+
+            <img src="{{ event.image.url }}"
+                alt="{{ event.title }}">
+
+            {% else %}
+
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+                alt="event-image">
+
+            {% endif %}
+
+        </div>
+
+
+
+
+
+
+        <!-- =========================
+             EVENT CONTENT
+        ========================= -->
+
+        <div class="detail-content">
+
+
+
+            <!-- CATEGORY -->
+
+            <span class="detail-category">
+
+                {{ event.category }}
+
+            </span>
+
+
+
+
+
+            <!-- TITLE -->
+
+            <h1>
+
+                {{ event.title }}
+
+            </h1>
+
+
+
+
+
+            <!-- EVENT META -->
+
+            <div class="detail-info">
+
+
+
+                <div class="info-item">
+
+                    <span>
+                        📅
+                    </span>
+
+                    <p>
+                        {{ event.date }}
+                    </p>
+
+                </div>
+
+
+
+
+
+                <div class="info-item">
+
+                    <span>
+                        📍
+                    </span>
+
+                    <p>
+                        {{ event.location }}
+                    </p>
+
+                </div>
+
+
+
+
+
+                <div class="info-item">
+
+                    <span>
+                        🎟️
+                    </span>
+
+                    <p>
+                        {{ event.total_seats }} Seats Available
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="detail-description">
+
+                <h3>
+                    About Event
+                </h3>
+
+                <p>
+
+                    {{ event.description }}
+
+                </p>
+
+            </div>
+
+
+
+
+
+
+            <!-- FEATURES -->
+
+            <div class="event-features">
+
+                <div class="feature-box">
+
+                    <span>
+                        ⚡
+                    </span>
+
+                    <h4>
+                        Live Experience
+                    </h4>
+
+                </div>
+
+
+
+                <div class="feature-box">
+
+                    <span>
+                        🎤
+                    </span>
+
+                    <h4>
+                        Expert Speakers
+                    </h4>
+
+                </div>
+
+
+
+                <div class="feature-box">
+
+                    <span>
+                        🏆
+                    </span>
+
+                    <h4>
+                        Premium Events
+                    </h4>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <!-- BUTTONS -->
+
+            <div class="detail-buttons">
+
+
+
+                <!-- BOOK BUTTON -->
+
+                <a href="{% url 'booking_page' event.id %}"
+                    class="btn-primary">
+
+                    Book Ticket
+
+                </a>
+
+
+
+
+
+                <!-- BACK BUTTON -->
+
+                <a href="/"
+                    class="btn-secondary">
+
+                    Back To Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- =========================
+     EXTRA CTA SECTION
+========================= -->
+
+<section class="cta-section container">
+
+    <div class="cta-box">
+
+        <h2>
+            Ready To Join This Event?
+        </h2>
+
+        <p>
+            Secure your seats now and enjoy an amazing experience with EventX.
+        </p>
+
+        <a href="{% url 'booking_page' event.id %}"
+            class="btn-primary">
+
+            Book Your Seat
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

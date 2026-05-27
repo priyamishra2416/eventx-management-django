@@ -1,0 +1,471 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- =========================
+     BACKGROUND EFFECTS
+========================= -->
+
+<div class="blur1"></div>
+
+<div class="blur2"></div>
+
+
+
+
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="hero container">
+
+
+
+    <!-- =========================
+         LEFT CONTENT
+    ========================= -->
+
+    <div class="hero-left">
+
+        <span class="tag">
+            🔥 Trending Campus Events
+        </span>
+
+        <h1>
+            Discover & Book Amazing College Events
+        </h1>
+
+        <p>
+            Explore hackathons, coding workshops, music festivals,
+            startup seminars and cultural events with a premium
+            booking experience powered by EventX.
+        </p>
+
+
+
+        <!-- HERO BUTTONS -->
+
+        <div class="hero-buttons">
+
+            <a href="#events"
+                class="btn-primary">
+
+                Explore Events
+
+            </a>
+
+
+
+            <a href="{% url 'register_page' %}"
+                class="btn-secondary">
+
+                Join Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- =========================
+         HERO IMAGE
+    ========================= -->
+
+    <div class="hero-right">
+
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop"
+            alt="event-image">
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- =========================
+     SEARCH SECTION
+========================= -->
+
+<section class="search-section container">
+
+    <form method="GET"
+        class="search-form">
+
+
+
+        <!-- SEARCH INPUT -->
+
+        <input type="text"
+            name="search"
+            placeholder="Search events..."
+            value="{{ request.GET.search }}">
+
+
+
+
+
+        <!-- CATEGORY FILTER -->
+
+        <select name="category">
+
+            <option value="">
+                All Categories
+            </option>
+
+            <option value="Tech">
+                Tech
+            </option>
+
+            <option value="Music">
+                Music
+            </option>
+
+            <option value="Startup">
+                Startup
+            </option>
+
+            <option value="Workshop">
+                Workshop
+            </option>
+
+        </select>
+
+
+
+
+
+        <!-- SEARCH BUTTON -->
+
+        <button type="submit">
+
+            Search
+
+        </button>
+
+    </form>
+
+</section>
+
+
+
+
+
+
+<!-- =========================
+     EVENT SECTION
+========================= -->
+
+<section class="event-section container"
+    id="events">
+
+
+
+    <!-- SECTION TITLE -->
+
+    <div class="section-title">
+
+        <h2>
+            Upcoming Events
+        </h2>
+
+        <p>
+            Book your favorite events before seats fill up.
+        </p>
+
+    </div>
+
+
+
+
+
+    <!-- EVENT GRID -->
+
+    <div class="event-container">
+
+
+
+        {% for event in events %}
+
+
+
+        <!-- SINGLE EVENT CARD -->
+
+        <div class="event-card">
+
+
+
+            <!-- EVENT IMAGE -->
+
+            <div class="event-image">
+
+                {% if event.image %}
+
+                <img src="{{ event.image.url }}"
+                    alt="{{ event.title }}">
+
+                {% else %}
+
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+                    alt="event-image">
+
+                {% endif %}
+
+
+
+
+
+                <!-- CATEGORY -->
+
+                <span class="event-badge">
+
+                    {{ event.category }}
+
+                </span>
+
+            </div>
+
+
+
+
+
+
+            <!-- EVENT CONTENT -->
+
+            <div class="event-content">
+
+
+
+                <!-- DATE -->
+
+                <span class="event-date">
+
+                    📅 {{ event.date }}
+
+                </span>
+
+
+
+
+
+                <!-- TITLE -->
+
+                <h3>
+
+                    {{ event.title }}
+
+                </h3>
+
+
+
+
+
+                <!-- DESCRIPTION -->
+
+                <p>
+
+                    {{ event.description|truncatewords:20 }}
+
+                </p>
+
+
+
+
+
+
+                <!-- EVENT FOOTER -->
+
+                <div class="event-footer">
+
+
+
+                    <!-- LOCATION -->
+
+                    <span class="event-location">
+
+                        📍 {{ event.location }}
+
+                    </span>
+
+
+
+
+
+                    <!-- BOOK BUTTON -->
+
+                    <a href="{% url 'event_detail' event.id %}"
+                        class="card-btn">
+
+                        Book Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        {% empty %}
+
+
+
+        <!-- EMPTY EVENTS -->
+
+        <div class="empty-events">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png"
+                alt="no-events">
+
+            <h2>
+                No Events Available
+            </h2>
+
+            <p>
+                Admin has not added any events yet.
+            </p>
+
+        </div>
+
+
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<!-- =========================
+     FEATURES SECTION
+========================= -->
+
+<section class="features-section container">
+
+    <div class="section-title">
+
+        <h2>
+            Why Choose EventX?
+        </h2>
+
+        <p>
+            Modern features built for seamless event booking.
+        </p>
+
+    </div>
+
+
+
+    <div class="features-grid">
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🎫
+            </div>
+
+            <h3>
+                QR Tickets
+            </h3>
+
+            <p>
+                Get instant QR-based digital tickets for every booking.
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Fast Booking
+            </h3>
+
+            <p>
+                Book seats instantly with a smooth and premium experience.
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📄
+            </div>
+
+            <h3>
+                PDF Download
+            </h3>
+
+            <p>
+                Download professional event tickets anytime.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<!-- =========================
+     CTA SECTION
+========================= -->
+
+<section class="cta-section container">
+
+    <div class="cta-box">
+
+        <h2>
+            Ready To Join Amazing Events?
+        </h2>
+
+        <p>
+            Start booking your favorite campus events with EventX today.
+        </p>
+
+        <a href="#events"
+            class="btn-primary">
+
+            Get Started
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

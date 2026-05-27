@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- =========================
+     DASHBOARD SECTION
+========================= -->
+
+<section class="dashboard-section container">
+
+
+
+    <!-- HEADER -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h1>
+                My Bookings
+            </h1>
+
+            <p>
+                Manage your booked event tickets and downloads.
+            </p>
+
+        </div>
+
+
+
+        <a href="{% url 'logout_page' %}"
+            class="btn-secondary">
+
+            Logout
+
+        </a>
+
+    </div>
+
+
+
+
+
+    <!-- DASHBOARD GRID -->
+
+    <div class="dashboard-grid">
+
+
+
+        {% for booking in bookings %}
+
+
+
+        <!-- SINGLE CARD -->
+
+        <div class="dashboard-card">
+
+
+
+            <!-- EVENT IMAGE -->
+
+            <div class="dashboard-image">
+
+                {% if booking.event.image %}
+
+                <img src="{{ booking.event.image.url }}"
+                    alt="{{ booking.event.title }}">
+
+                {% else %}
+
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+                    alt="event-image">
+
+                {% endif %}
+
+            </div>
+
+
+
+
+
+            <!-- CONTENT -->
+
+            <div class="dashboard-content">
+
+
+
+                <!-- CATEGORY -->
+
+                <span class="dashboard-category">
+
+                    {{ booking.event.category }}
+
+                </span>
+
+
+
+
+
+                <!-- EVENT TITLE -->
+
+                <h2>
+
+                    {{ booking.event.title }}
+
+                </h2>
+
+
+
+
+
+                <!-- INFO -->
+
+                <div class="dashboard-info">
+
+                    <p>
+                        👤 {{ booking.full_name }}
+                    </p>
+
+                    <p>
+                        📧 {{ booking.email }}
+                    </p>
+
+                    <p>
+                        📞 {{ booking.phone }}
+                    </p>
+
+                    <p>
+                        💺 Seats: {{ booking.seats }}
+                    </p>
+
+                    <p>
+                        📍 {{ booking.event.location }}
+                    </p>
+
+                    <p>
+                        📅 {{ booking.booking_date }}
+                    </p>
+
+                </div>
+
+
+
+
+
+                <!-- QR CODE -->
+
+                <div class="dashboard-qr">
+
+                    {% if booking.qr_code %}
+
+                    <img src="{{ booking.qr_code.url }}"
+                        alt="qr-code">
+
+                    {% endif %}
+
+                </div>
+
+
+
+
+
+                <!-- BUTTONS -->
+
+                <div class="dashboard-buttons">
+
+                    <a href="{% url 'ticket_page' booking.id %}"
+                        class="card-btn">
+
+                        View Ticket
+
+                    </a>
+
+
+
+                    <a href="{% url 'download_ticket' booking.id %}"
+                        class="btn-secondary">
+
+                        Download PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        {% empty %}
+
+
+
+        <!-- EMPTY STATE -->
+
+        <div class="empty-dashboard">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
+                alt="empty-booking">
+
+            <h2>
+                No Bookings Found
+            </h2>
+
+            <p>
+                You have not booked any events yet.
+            </p>
+
+            <a href="/#events"
+                class="btn-primary">
+
+                Explore Events
+
+            </a>
+
+        </div>
+
+
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

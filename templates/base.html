@@ -1,0 +1,187 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================
+         META TAGS
+    ========================= -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        EventX | Event Booking System
+    </title>
+
+
+
+    <!-- =========================
+         CSS FILE
+    ========================= -->
+
+    <link rel="stylesheet"
+        href="{% static 'css/style.css' %}">
+
+
+
+    <!-- =========================
+         FAVICON
+    ========================= -->
+
+    <link rel="icon"
+        href="{% static 'images/logo.png' %}">
+
+</head>
+
+<body>
+
+
+
+    <!-- =========================
+         LOADER
+    ========================= -->
+
+    <div class="loader">
+
+        <div class="spinner"></div>
+
+    </div>
+
+
+
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="container nav-wrapper">
+
+
+
+            <!-- LOGO -->
+
+            <a href="/" class="logo">
+
+                <img src="{% static 'images/logo.png' %}"
+                    alt="logo">
+
+                <h2>
+                    EventX
+                </h2>
+
+            </a>
+
+
+
+
+
+            <!-- NAVIGATION LINKS -->
+
+            <div class="nav-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/#events">
+                    Events
+                </a>
+
+
+
+                {% if request.user.is_authenticated %}
+
+                <a href="{% url 'dashboard' %}">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'logout_page' %}">
+                    Logout
+                </a>
+
+                {% else %}
+
+                <a href="{% url 'login_page' %}">
+                    Login
+                </a>
+
+                <a href="{% url 'register_page' %}"
+                    class="nav-btn">
+
+                    Get Started
+
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+                © 2026 EventX | Modern Django Event Booking System
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+
+
+    <!-- =========================
+         LOADER SCRIPT
+    ========================= -->
+
+    <script>
+
+        window.addEventListener("load", function () {
+
+            document.querySelector(".loader").style.display = "none";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

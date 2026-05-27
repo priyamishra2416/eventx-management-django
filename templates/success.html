@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- =========================
+     BACKGROUND EFFECTS
+========================= -->
+
+<div class="blur1"></div>
+
+<div class="blur2"></div>
+
+
+
+
+
+<!-- =========================
+     SUCCESS SECTION
+========================= -->
+
+<section class="success-section container">
+
+
+
+    <!-- SUCCESS CARD -->
+
+    <div class="success-card">
+
+
+
+        <!-- SUCCESS ICON -->
+
+        <div class="success-icon">
+
+            🎉
+
+        </div>
+
+
+
+
+
+        <!-- TITLE -->
+
+        <h1>
+            Booking Successful
+        </h1>
+
+
+
+
+
+        <!-- MESSAGE -->
+
+        <p>
+            Your event booking has been confirmed successfully.
+            Your digital QR ticket is now ready.
+        </p>
+
+
+
+
+
+
+        <!-- SUCCESS IMAGE -->
+
+        <div class="success-image">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png"
+                alt="success-image">
+
+        </div>
+
+
+
+
+
+
+        <!-- BOOKING INFO -->
+
+        <div class="success-info">
+
+
+
+            <!-- EVENT -->
+
+            <div class="info-box">
+
+                <h3>
+                    🎫 Event
+                </h3>
+
+                <p>
+                    {{ booking.event.title }}
+                </p>
+
+            </div>
+
+
+
+
+
+            <!-- NAME -->
+
+            <div class="info-box">
+
+                <h3>
+                    👤 Name
+                </h3>
+
+                <p>
+                    {{ booking.full_name }}
+                </p>
+
+            </div>
+
+
+
+
+
+            <!-- SEATS -->
+
+            <div class="info-box">
+
+                <h3>
+                    💺 Seats
+                </h3>
+
+                <p>
+                    {{ booking.seats }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <!-- QR CODE -->
+
+        {% if booking.qr_code %}
+
+        <div class="success-qr">
+
+            <h3>
+                Your QR Ticket
+            </h3>
+
+            <img src="{{ booking.qr_code.url }}"
+                alt="qr-code">
+
+        </div>
+
+        {% endif %}
+
+
+
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="ticket-buttons">
+
+
+
+            <!-- VIEW TICKET -->
+
+            <a href="{% url 'ticket_page' booking.id %}"
+                class="btn-primary">
+
+                View Ticket
+
+            </a>
+
+
+
+
+
+            <!-- DOWNLOAD PDF -->
+
+            <a href="{% url 'download_ticket' booking.id %}"
+                class="btn-secondary">
+
+                Download PDF
+
+            </a>
+
+        </div>
+
+
+
+
+
+
+        <!-- BACK BUTTON -->
+
+        <div class="success-home-btn">
+
+            <a href="/"
+                class="card-btn">
+
+                Back To Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

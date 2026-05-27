@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<section class="booking-section container">
+
+    <div class="booking-card">
+
+        <div class="booking-left">
+
+            {% if event.image %}
+
+            <img src="{{ event.image.url }}" alt="">
+
+            {% endif %}
+
+        </div>
+
+
+
+        <div class="booking-right">
+
+            <span class="booking-tag">
+
+                {{ event.category }}
+
+            </span>
+
+            <h1>
+
+                {{ event.title }}
+
+            </h1>
+
+            <p>
+
+                Fill the booking form to reserve your seat.
+
+            </p>
+
+
+
+            <form method="POST">
+
+    {% csrf_token %}
+
+    <input type="text"
+        name="full_name"
+        placeholder="Full Name"
+        required>
+
+    <input type="email"
+        name="email"
+        placeholder="Email Address"
+        required>
+
+    <input type="text"
+        name="phone"
+        placeholder="Phone Number"
+        required>
+
+    <input type="number"
+        name="seats"
+        placeholder="Seats"
+        required>
+
+    <button type="submit">
+        Confirm Booking
+    </button>
+
+</form>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
