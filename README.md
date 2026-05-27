@@ -48,25 +48,7 @@ The platform provides:
 
 ---
 
-# 🖼️ Screenshots
 
-## 🏠 Home Page
-
-<img width="100%" src="https://via.placeholder.com/1200x700.png?text=Home+Page"/>
-
----
-
-## 🎉 Events Page
-
-<img width="100%" src="https://via.placeholder.com/1200x700.png?text=Events+Page"/>
-
----
-
-## 📋 User Dashboard
-
-<img width="100%" src="https://via.placeholder.com/1200x700.png?text=Dashboard"/>
-
----
 
 # 🧰 Tech Stack
 
